@@ -1,0 +1,102 @@
+{
+  "realm": "platform-demo",
+  "enabled": true,
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "roles": {
+    "realm": [
+      { "name": "platform-user" },
+      { "name": "business-a-user" },
+      { "name": "business-b-user" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "platform-ui",
+      "name": "platform-ui",
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "redirectUris": ["http://localhost:4200/*"],
+      "webOrigins": ["http://localhost:4200"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "fullScopeAllowed": true
+    },
+    {
+      "clientId": "business-a-portal",
+      "name": "business-a-portal",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "business-a-secret",
+      "redirectUris": ["http://localhost:8082/*", "http://localhost:8084/business-a/*"],
+      "webOrigins": ["http://localhost:8082", "http://localhost:8084"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "fullScopeAllowed": true
+    },
+    {
+      "clientId": "business-b-portal",
+      "name": "business-b-portal",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "business-b-secret",
+      "redirectUris": ["http://localhost:8083/*", "http://localhost:8084/business-b/*"],
+      "webOrigins": ["http://localhost:8083", "http://localhost:8084"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "fullScopeAllowed": true
+    }
+  ],
+  "users": [
+    {
+      "username": "demo.admin",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Demo",
+      "lastName": "Admin",
+      "email": "demo.admin@platform.local",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["platform-user", "business-a-user", "business-b-user"]
+    },
+    {
+      "username": "demo.a",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Demo",
+      "lastName": "BusinessA",
+      "email": "demo.a@platform.local",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["platform-user", "business-a-user"]
+    },
+    {
+      "username": "demo.b",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Demo",
+      "lastName": "BusinessB",
+      "email": "demo.b@platform.local",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["platform-user", "business-b-user"]
+    }
+  ]
+}
