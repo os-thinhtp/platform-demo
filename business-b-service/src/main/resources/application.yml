@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/platform-demo}
+            authorization-uri: ${KEYCLOAK_AUTH_URI:http://localhost:8080/realms/platform-demo/protocol/openid-connect/auth}
+            token-uri: ${KEYCLOAK_TOKEN_URI:http://localhost:8080/realms/platform-demo/protocol/openid-connect/token}
+            jwk-set-uri: ${KEYCLOAK_JWK_URI:http://localhost:8080/realms/platform-demo/protocol/openid-connect/certs}
+            user-info-uri: ${KEYCLOAK_USERINFO_URI:http://localhost:8080/realms/platform-demo/protocol/openid-connect/userinfo}
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: business-b-portal
+            client-secret: ${BUSINESS_B_CLIENT_SECRET:business-b-secret}
+            scope: openid,profile,email,roles
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

@@ -1,0 +1,29 @@
+<main class="portal-shell">
+  <header>
+    <h1>Platform Portal</h1>
+    <p>Centralized SSO launcher for integrated business portals.</p>
+  </header>
+
+  <section *ngIf="!user" class="auth-box">
+    <p>You are not signed in.</p>
+    <button (click)="login()">Login with Keycloak</button>
+  </section>
+
+  <section *ngIf="user" class="dashboard">
+    <div class="user-card">
+      <h2>Authenticated User</h2>
+      <p><strong>{{ user.username }}</strong></p>
+      <p>Roles: {{ roleSummary }}</p>
+      <button (click)="logout()">Logout</button>
+    </div>
+
+    <h2>Application Launcher</h2>
+    <div class="app-grid">
+      <a *ngFor="let app of apps" class="app-card" [href]="app.launcherUrl" target="_blank" rel="noopener noreferrer">
+        <h3>{{ app.name }}</h3>
+        <p>{{ app.description }}</p>
+        <span>Open</span>
+      </a>
+    </div>
+  </section>
+</main>

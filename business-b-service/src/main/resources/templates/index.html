@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business B Portal</title>
+</head>
+<body>
+<h1 th:text="${serviceName}">Business B Portal</h1>
+<p>Logged in user: <strong th:text="${username}">demo</strong></p>
+<p>Granted roles:</p>
+<ul>
+    <li th:each="role : ${roles}" th:text="${role}">ROLE_SAMPLE</li>
+</ul>
+<p><a href="http://localhost:8084/business-a/">Go to Business A Portal</a></p>
+<p><a href="http://localhost:4200">Back to Platform Portal</a></p>
+</body>
+</html>
